@@ -1,0 +1,39 @@
+Instalação de Dependências:
+
+    O usuário precisará ter o PHP instalado em sua máquina. 
+    Use o Composer para instalar as dependências do Laravel. 
+    O comando é 'composer install' no terminal, na pasta do projeto.
+
+Configuração do Ambiente:
+
+    Crie um arquivo .env com as seguintes configurações para o banco de dados: 
+        
+        DB_CONNECTION=pgsql
+        DB_HOST=db
+        DB_PORT=5432
+        DB_DATABASE=cadastro
+        DB_USERNAME=postgres
+        DB_PASSWORD=postgres
+        POSTGRES_HOST_AUTH_METHOD=trust
+
+Banco de Dados:
+
+    Crie um banco de dados local e execute as migrações para criar as tabelas necessárias. 
+    Use o comando 'php artisan migrate'.
+
+Login para o banco de dados:
+
+    USUÁRIO: postgres
+    SENHA: postgres
+
+Chave de Aplicativo:
+
+    Gere uma nova chave de aplicativo com o comando 'php artisan key:generate'.
+
+Servidor Embutido:
+
+    Para executar o aplicativo localmente, 
+    use o comando 'docker-compose up -d'
+    acesse http://localhost:9000/
+    usando o servidor embutido do Laravel 
+    'php artisan serve'.

@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "9000:9000" # Alterada a porta para corresponder à porta do servidor Laravel
+        volumes:
+            - .:/var/www
+        working_dir: /var/www
+        networks:
+            - my-laravel-network
+        depends_on:
+            - db
+
+    db:
+        image: postgres:14
+        restart: always
+        environment:
+            POSTGRES_DB: cadastro
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+            - "5439:5432"
+        volumes:
+            - "psqldata:/var/lib/postgresql/data"
+        networks:
+            - my-laravel-network
+
+networks:
+    my-laravel-network:
+        driver: bridge
+
+volumes:
+    psqldata:
